@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Search Google">
+    <parameter name="browser" value="chrome"></parameter>
+
+    <parameter name="baseUrl" value="empty"></parameter>
+
+    <test name="Login">
+        <classes>
+            <class name="LoginTest">
+                <methods>
+                    <include name="logintwo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

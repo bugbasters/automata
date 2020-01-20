@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Search Google">
+    <parameter name="browser" value="chrome"></parameter>
+
+    <parameter name="baseUrl" value="google"></parameter>
+    <parameter name="searchQuery" value="search"></parameter>
+
+    <test name="generate">
+        <classes>
+            <class name="BaseTest">
+                <methods>
+                    <include name="after"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="open">
+        <classes>
+            <class name="BaseTest">
+                <methods>
+                    <include name="afterafter"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

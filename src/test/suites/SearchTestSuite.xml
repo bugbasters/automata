@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Search Google">
+    <parameter name="testName" value="Search_Google"></parameter>
+    <parameter name="browser" value="chrome"></parameter>
+
+    <parameter name="baseUrl" value="google"></parameter>
+    <parameter name="searchQuery" value="search"></parameter>
+
+    <test name="PerformSearch">
+        <classes>
+            <class name="SearchTest">
+                <methods>
+                    <include name="searchTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
