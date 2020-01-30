@@ -13,7 +13,6 @@ public class SearchPage extends MainMethods {
 
     private SelenideElement searchInput = $(By.name("q"));
 
-
     /**
      * Open Search Page
      */
@@ -21,7 +20,6 @@ public class SearchPage extends MainMethods {
     public void searchPageOpen() {
         Selenide.open("/");
     }
-
 
     /**
      * Example of using full step method scenario
@@ -31,7 +29,6 @@ public class SearchPage extends MainMethods {
         searchInput.sendKeys(searchQuerry);
         searchInput.pressEnter();
     }
-
 
     /**
      * Example of using step by step method scenario, interacting with each element separately

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Search Google">
+    <test name="PerformSearch">
+        <classes>
+            <class name="ClassTest">
+                <methods>
+                    <include name="searchTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

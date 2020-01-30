@@ -1,8 +1,11 @@
+import com.codeborne.selenide.testng.TextReport;
 import driver.MainMethods;
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.TestNG;
 import org.testng.annotations.*;
 import com.codeborne.selenide.testng.ScreenShooter;
+import org.testng.reporters.*;
 import utils.UserData;
 
 import java.io.BufferedReader;
@@ -13,7 +16,7 @@ import static com.codeborne.selenide.FileDownloadMode.PROXY;
 import static utils.TestDataReader.getProperty;
 
 
-@Listeners({ ScreenShooter.class})
+@Listeners({ ScreenShooter.class, TextReport.class, TestHTMLReporter.class, SuiteHTMLReporter.class, FailedReporter.class, XMLReporter.class, EmailableReporter.class, JUnitReportReporter.class})
 
 public class BaseTest extends MainMethods {
 
@@ -84,6 +87,6 @@ public class BaseTest extends MainMethods {
         runTerminal("cp", "-R", "./allure-report", reportsFolder);
         runTerminal("rm", "-R", "allure-results");
         runTerminal("rm", "-R", "allure-report");
-        runTerminal("allure", "open", reportsFolder);
+        //runTerminal("allure", "open", reportsFolder);
     }
 }
