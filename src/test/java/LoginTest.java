@@ -1,23 +1,14 @@
 import components.LoginPage;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import utils.BackendLogin;
 
 public class LoginTest extends BaseTest {
 
+    @Parameters
     @Test
     public void login() throws Exception {
-        LoginPage loginPage = new LoginPage();
-        loginPage.loginAPI();
-    }
-
-    @Test
-    public void logintwo() throws Exception {
-        LoginPage loginPage = new LoginPage();
-        loginPage.loginApitwoo();
-    }
-
-    @Test
-    public void loginthree() throws Exception {
-        LoginPage loginPage = new LoginPage();
-        loginPage.loginAPItwoo();
+        BackendLogin loginPage = new BackendLogin();
+        //loginPage.loginAPI();
     }
 }
