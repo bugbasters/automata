@@ -24,15 +24,15 @@ public class SearchTest extends BaseTest {
     @Test
     @Description("Search Test in Google")
     public void searchTest(String searchQuery) {
-        Logs.startTestCase(testCaseName);
-        TextReport.onSucceededTest = true;
-        TextReport.onFailedTest = true;
-        Logs.startTestCase(testCaseName);
+        //Logs.startTestCase(testCaseName);
+        //TextReport.onSucceededTest = true;
+        //TextReport.onFailedTest = true;
+        //Logs.startTestCase(testCaseName);
         searchPage = new SearchPage();
         searchPage.searchPageOpen();
-        Logs.info("Search page opened");
-        screenshot("test");
+        //Logs.info("Search page opened");
+        //screenshot("test");
         searchPage.search(TestDataReader.getProperyData("testData/search.properties", searchQuery));
-        Logs.endTestCase(testCaseName);
+        //Logs.endTestCase(testCaseName);
     }
 }

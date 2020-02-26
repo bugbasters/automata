@@ -1,6 +1,11 @@
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.testng.TextReport;
 import driver.MainMethods;
 import com.codeborne.selenide.Configuration;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.core.har.HarEntry;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.TestNG;
 import org.testng.annotations.*;
@@ -11,8 +16,10 @@ import utils.UserData;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import static com.codeborne.selenide.FileDownloadMode.PROXY;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static utils.TestDataReader.getProperty;
 
 
@@ -20,17 +27,16 @@ import static utils.TestDataReader.getProperty;
 
 public class BaseTest extends MainMethods {
 
-
     @Parameters({"baseUrl", "browser"})
     @BeforeClass
-    public void setup(String baseUrl, String browser) {
+    public void setup(String baseUrl, String browser) throws IOException {
 
         /**
          * Delete old allure results
          */
-        runTerminal("rm", "-R", "allure-results");
+        /*runTerminal("rm", "-R", "allure-results");
         runTerminal("mkdir", "reports");
-        runTerminal("mkdir", "results");
+        runTerminal("mkdir", "results");*/
 
         /**
          * Start with maximized browser window adjusted to users screen resolution

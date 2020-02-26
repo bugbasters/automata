@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Selenide;
 import components.LoginPage;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -9,6 +10,6 @@ public class LoginTest extends BaseTest {
     @Test
     public void login() throws Exception {
         BackendLogin loginPage = new BackendLogin();
-        //loginPage.loginAPI();
+        loginPage.sendGet("baseUrl", "baseUrlApi","tokenName", "username", "password");
     }
 }

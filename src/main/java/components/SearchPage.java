@@ -3,9 +3,13 @@ package components;
 import driver.MainMethods;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class SearchPage extends MainMethods {
 
@@ -19,6 +23,7 @@ public class SearchPage extends MainMethods {
 
     public void searchPageOpen() {
         Selenide.open("/");
+        checkPageLoaded();
     }
 
     /**

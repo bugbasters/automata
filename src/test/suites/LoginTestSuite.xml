@@ -4,13 +4,13 @@
 <suite name="Search Google">
     <parameter name="browser" value="chrome"></parameter>
 
-    <parameter name="baseUrl" value="empty"></parameter>
+    <parameter name="baseUrl" value="baseUrl"></parameter>
 
     <test name="Login">
         <classes>
             <class name="LoginTest">
                 <methods>
-                    <include name="logintwo"/>
+                    <include name="login"/>
                 </methods>
             </class>
         </classes>

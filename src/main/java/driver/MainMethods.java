@@ -3,17 +3,29 @@ package driver;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.sun.net.ssl.*;
+import io.restassured.authentication.PreemptiveBasicAuthScheme;
+import io.restassured.response.Response;
+import org.junit.Assert;
 import utils.TestDataReader;
 import utils.UserData;
 
+import javax.net.ssl.SSLSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.matchesText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
+import io.restassured.RestAssured;
 
 public class MainMethods {
 
@@ -24,7 +36,36 @@ public class MainMethods {
     /**
      * Get status 200
      */
-    public void getStatus200() {
+    public void getResponseCode(String urlString) throws MalformedURLException, IOException {
+
+        URL url = new URL(urlString);
+        HttpURLConnection huc = (HttpURLConnection)url.openConnection();
+        huc.setRequestMethod("GET");
+        huc.connect();
+        System.out.println(huc.getResponseMessage());
+        System.out.println(huc.getResponseCode());
+    }
+
+    public void checkPageLoaded() {
+        String href = url();
+        System.out.println(href);
+        PreemptiveBasicAuthScheme authScheme = new PreemptiveBasicAuthScheme();
+        authScheme.setUserName("bugbasters31");
+        authScheme.setPassword("Azerty129");
+        RestAssured.authentication = authScheme;
+        Response res = RestAssured.get("https://tower.bet/finances");
+        try {
+            Assert.assertEquals(200,res.getStatusCode());
+            System.out.println("Status code received is :: " + res.getStatusCode());
+        } catch (AssertionError e){
+            e.printStackTrace();
+            System.out.println("Status code received is :: " + res.getStatusCode());
+            System.out.println(res.getStatusLine());
+            throw new AssertionError("Page not loaded successfully");
+        }
+    }
+
+    public void checkPageLoadedAuth() {
 
     }
 
