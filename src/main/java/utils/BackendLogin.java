@@ -60,7 +60,7 @@ public class BackendLogin {
 
         obj.sendPost(baseUrlApi, TestDataReader.getProperty(tokenName), TestDataReader.getProperty(username), TestDataReader.getProperty(password));
         System.out.println(loginToken);
-        Response res = RestAssured.given().cookie("__tt", loginToken).when().get("https://tower.bet/finances");
+        Response res = RestAssured.given().cookie("jwt_token", loginToken).when().get("http://moderator-stage.alluredate.com/");
         System.out.println(res.getStatusCode() + "   " + res.getStatusLine());
         System.out.println(res.getBody().asString());
 
